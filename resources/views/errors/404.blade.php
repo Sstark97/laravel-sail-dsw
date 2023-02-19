@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center">"Esta es mi primera vista en Laravel"</h1>
+    <img src="{{asset('images/404.png')}}" alt="Error 404">
 </div>
 @endsection

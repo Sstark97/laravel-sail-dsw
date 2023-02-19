@@ -54,8 +54,15 @@ Route::match(array('GET', 'POST'),"/marvelCharacters", function () {
     ];
 });
 
-Route::get("timezone", function () {
-    $timezone = config('app.timezone');
+Route::view('inicio', "home");
 
-    return "The timezone is $timezone";
+Route::get('/fecha', function () {
+
+    return view("fecha", ["date" => with(null, function () {
+        return [
+            "Day" => date("d"),
+            "Month" =>  date("m"),
+            "Year" => date("y")
+        ];
+    })]);
 });
