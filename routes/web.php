@@ -26,3 +26,36 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('community', [App\Http\Controllers\CommunityLinkController::class,'index']);
 Route::post('community', [App\Http\Controllers\CommunityLinkController::class,'store']);
+
+Route::get('/topyc/{name?}', function ($name = "Marvel") {
+    return $name;
+});
+
+Route::match(array('GET', 'POST'),"/marvelCharacters", function () {
+    return [
+        [
+            "name" => "Spiderman"
+        ],
+        [
+            "name" => "Wolverine"
+        ],
+        [
+            "name" => "Captain America"
+        ],
+        [
+            "name" => "Hulk"
+        ],
+        [
+            "name" => "Ant-Man"
+        ],
+        [
+            "name" => "Thor"
+        ],
+    ];
+});
+
+Route::get("timezone", function () {
+    $timezone = config('app.timezone');
+
+    return "The timezone is $timezone";
+});
