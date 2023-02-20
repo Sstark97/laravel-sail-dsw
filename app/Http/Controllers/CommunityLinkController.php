@@ -30,9 +30,16 @@ class CommunityLinkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'link' => 'required|active_url'
+        ]);
+        
+        request()->merge(['user_id' => Auth::id(), 'channel_id' => 1 ]);
+        CommunityLink::create($request->all());
+        return back();
     }
 
     /**
